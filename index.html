@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html lang=en>
-    <head>
-        <script src=https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js></script>
-        <script src=https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js></script>
 
-        <script>
-            // Helper script
+<head>
+    <script src=https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js></script>
+    <script src=https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js></script>
 
-            /**
-             * * Main Runtime
-             * 
-             * ? Anything which related to DOM should be run in this callback.
-             */
-            const main = (callback) => {
+    <script>
+        // Helper script
+
+        /**
+         * * Main Runtime
+         * 
+         * ? Anything which related to DOM should be run in this callback.
+         */
+        const main = (callback) => {
                 document.addEventListener("DOMContentLoaded", callback, {
                     once: true
                 })
             },
-                /**
-                 * ? Shorten syntax for querying for element id
-                 */
-                id = (id) => {
-                    const reference = document.getElementById(id)
-
-                    return Object.assign(reference, {
-                        on: (event, callback) => {
-                            reference.addEventListener(event, callback)
-
-                            return () => reference.removeEventListener(event, callback)
-                        }
-                    })
-                }
-        </script>
-        <script defer>
-            // Firebase Setup
-            const firebaseConfig = {
-                /**
-                 * ! Place connection script here
-                 * ...
-                 */
-            }
-
-            firebase.initializeApp(firebaseConfig)
-
-            const firestore = firebase.firestore()
-
             /**
-             * * Main Runtime
-             * 
-             * ? Anything which related to DOM should be run here.
+             * ? Shorten syntax for querying for element id
              */
-            main(() => {
-                /**
-                 * ? When element with id "read" is clicked.
-                 * ? The function will run.
-                 * */
-                id("read").on("click", () => {
-                    id("title").textContent = "Clicked"
+            id = (id) => {
+                const reference = document.getElementById(id)
 
-                    /**
-                     * * Do something with Firestore here
-                     */
+                return Object.assign(reference, {
+                    on: (event, callback) => {
+                        reference.addEventListener(event, callback)
+
+                        return () => reference.removeEventListener(event, callback)
+                    }
                 })
+            }
+    </script>
+    <script defer>
+        // Firebase Setup
+        const firebaseConfig = {
+            /**
+             * ! Place connection script here
+             * ...
+             */
+            apiKey: "AIzaSyBZmZa9i6zf-0l5sP1k5q_1B-arpJsE9ME",
+            authDomain: "multi-firebase-e62aa.firebaseapp.com",
+            projectId: "multi-firebase-e62aa",
+            storageBucket: "multi-firebase-e62aa.appspot.com",
+            messagingSenderId: "221553832159",
+            appId: "1:221553832159:web:0f48022e40029cc55ef96a",
+            measurementId: "G-6BMC4ML3Z1"
+        }
+
+        firebase.initializeApp(firebaseConfig)
+
+        const firestore = firebase.firestore()
+
+        /**
+         * * Main Runtime
+         * 
+         * ? Anything which related to DOM should be run here.
+         */
+        main(() => {
+            /**
+             * ? When element with id "read" is clicked.
+             * ? The function will run.
+             * */
+            id("read").on("click", () => {
+                id("title").textContent = "Clicked"
+
+                /**
+                 * * Do something with Firestore here
+                 */
             })
-        </script>
-    </head>
-    <body>
-        <h1 id=title>---</h1>
-        <button id=read>Read</button>
-    </body>
+        })
+    </script>
+</head>
+
+<body>
+    <h1 id=title>---</h1>
+    <button id=read>Read</button>
+</body>
+
 </html>
